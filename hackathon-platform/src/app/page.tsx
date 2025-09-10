@@ -140,7 +140,32 @@ export default function HackersUnityPlatform() {
         { team: 'Tech Titans', project: 'HealthAI', prize: '₹75,000' },
         { team: 'Innovation Squad', project: 'EduVerse', prize: '₹50,000' }
       ]
-    }
+    },
+    {id: 5,
+      title: 'Hacker\'s Unity 2025 Spring Hackathon',
+      status: 'live',
+      description: 'Build innovative solutions for real-world problems in 36 hours',
+      startDate: '2025-03-29',
+      endDate: '2025-03-30',
+      registrationDeadline: '2025-03-25',
+      prizePool: '₹1,50,000',
+      participants: 420,
+      maxParticipants: 500,
+      tracks: ['AI/ML', 'Blockchain', 'IoT', 'Web3', 'FinTech'],
+      sponsors: ['TechCorp', 'InnovateLabs', 'FutureVC'],
+      image: '🚀',
+      submissions: 0,
+      location: 'Hybrid - Jaipur & Online',
+      teamSize: '1-4 members',
+      difficulty: 'Intermediate',
+      type: 'Hackathon',
+      highlights: [
+        'Free food & accommodation',
+        'Mentorship from industry experts',
+        'Networking opportunities',
+        'Swag & goodies'
+      ]
+}
   ];
 
   const getTimeUntil = (date: string): { days: number; hours: number; minutes: number } => {
@@ -168,30 +193,64 @@ export default function HackersUnityPlatform() {
   });
 
   const themeClasses = {
-    container: isDarkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-[#1e293b]',
-    header: isDarkMode ? 'bg-[#0f172a]/95 border-[#1e293b] backdrop-blur-lg' : 'bg-white/95 border-gray-100 backdrop-blur-lg',
+     /* ternary operator for theme switch */
+    container: isDarkMode ? 'bg-[#0f172a] text-white' : 'bg-white text-zinc-50',
+    // colour of header of the website in light and dark mode
+    header: isDarkMode ? 'bg-[#0f172a]/95 border-[#1e293b] backdrop-blur-lg' : 'bg-stone-900 border-yellow-600 backdrop-blur-lg',
+    // colour of sidebar when open in mobile
     sidebar: isDarkMode ? 'bg-[#1e293b] border-[#1e293b]' : 'bg-white border-gray-100',
-    card: `${isDarkMode ? 'bg-[#1e293b] border-[#262f45] hover:border-blue-500' : 'bg-white border-gray-200 hover:border-blue-500'} rounded-xl border transition-all duration-200 hover:shadow-lg hover:-translate-y-1`,
+    // color of card section (hackathon card, event card)
+    card: `${isDarkMode ? 'bg-[#1e293b] border-[#262f45] hover:border-blue-500': 'bg-stone-900 border-purple-500 hover:border-pink-500'} // Light mode = yellow card, purple border, pink hover border
+  rounded-xl border transition-all duration-200 hover:shadow-lg hover:-translate-y-1`,
+
     button: {
-      primary: 'bg-blue-600 hover:bg-blue-700 text-white transition-all duration-200 px-4 py-2 rounded-lg font-medium hover:shadow-lg hover:-translate-y-0.5',
-      secondary: `${isDarkMode ? 'bg-[#262f45] hover:bg-[#334155]' : 'bg-gray-100 hover:bg-gray-200'} text-inherit transition-all duration-200 px-4 py-2 rounded-lg font-medium`,
-      outline: `border ${isDarkMode ? 'border-[#334155] hover:bg-[#1e293b]' : 'border-gray-200 hover:bg-gray-50'} transition-all duration-200 px-4 py-2 rounded-lg font-medium`
+    // primary is for sign-in and registration button
+      primary: isDarkMode? "bg-blue-600 hover:bg-blue-700 text-white transition-all duration-200 px-4 py-2 rounded-lg font-medium hover:shadow-lg hover:-translate-y-0.5": "bg-stone-500 hover:bg-stone-900 text-white transition-all duration-200 px-4 py-2 rounded-lg font-medium hover:shadow-lg hover:-translate-y-0.5"
+,
+      // seconday is for view results
+      secondary: `${isDarkMode ? 'bg-[#262f45] hover:bg-[#334155]' : 'bg-stone-950 hover:bg-gray-200'} text-inherit transition-all duration-200 px-4 py-2 rounded-lg font-medium`,
+
+      // outline is for other buttons like "detils button on the card"
+      outline: `border ${isDarkMode ? 'border-[#334155] hover:bg-stone-900' : 'border-stone-200 hover:bg-stone-600'} transition-all duration-200 px-4 py-2 rounded-lg font-medium`
     },
+
+    // input is for search bars
     input: `w-full rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 ${
       isDarkMode 
         ? 'bg-[#1e293b] border-[#334155] text-white placeholder-gray-400' 
-        : 'bg-white border-gray-200 text-gray-900'
+        : 'bg-white border-stone-900 text-stone-900 placeholder-gray-400'
     }`,
-    gradient: {
-      primary: 'bg-gradient-to-r from-blue-600 to-blue-700',
-      accent: 'bg-gradient-to-r from-blue-600 to-indigo-600'
-    },
-    glass: isDarkMode ? 'bg-[#1e293b]/50 backdrop-blur-md border border-white/5' : 'bg-white/50 backdrop-blur-md border border-gray-200/50',
-    text: {
-      primary: isDarkMode ? 'text-white' : 'text-[#1e293b]',
-      secondary: isDarkMode ? 'text-gray-300' : 'text-gray-600',
-      muted: isDarkMode ? 'text-gray-400' : 'text-gray-500'
-    }
+
+    // gradient as the name suggest is for the centered gradient element in our website
+  gradient: {
+  primary: isDarkMode
+    ? 'bg-blue-700'
+    : 'bg-stone-200 border border-stone-400',
+
+  accent: isDarkMode
+    ? 'bg-indigo-600'
+    : 'bg-stone-300 border border-stone-500'
+}
+
+,
+
+// glass is for colour in the gradient, footer, and card
+    glass: isDarkMode 
+  ? 'bg-[#1e293b]/50 backdrop-blur-md border border-white/5' 
+  : 'bg-pink-300/70 backdrop-blur-md border border-yellow-500',
+
+text: {
+  primary: isDarkMode 
+    ? 'text-white' 
+    : 'text-lime-700',   // it is for text on the card box
+  secondary: isDarkMode 
+    ? 'text-gray-300' 
+    : 'text-white',   // it is for text in the footer and card box
+  muted: isDarkMode 
+    ? 'text-gray-400' 
+    : 'text-yellow-600'  // it is for the text on the card box
+}
+
   };
 
   interface EventDetailsModalProps {
@@ -250,7 +309,8 @@ export default function HackersUnityPlatform() {
 
           {/* Content */}
           <div className="p-6 space-y-6">
-            {/* Quick Stats */}
+
+            {/* Quick Stats ------ it is for the small boxes when you click on any card */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-lg border border-green-200 dark:border-green-800">
                 <Trophy className="w-6 h-6 mx-auto mb-2 text-green-600" />
@@ -392,7 +452,9 @@ export default function HackersUnityPlatform() {
               </div>
             )}
 
-            {/* Action Buttons */}
+
+
+            {/* Action Buttons ------ signin to register, register for an event, submit projects, view all submission, view guidelines */}
             <div className="flex gap-4 pt-4 border-t">
               {!authUser ? (
                 <button 
@@ -1204,7 +1266,7 @@ export default function HackersUnityPlatform() {
               <div className="space-y-2">
                 <div className={`flex items-center space-x-2 ${themeClasses.text.secondary}`}>
                   <Mail className="w-4 h-4" />
-                  <span>hello@hackersunity.com</span>
+                  <span><a href='hackerunity.community@gmail.com'>hackerunity.community@gmail.com</a></span>
                 </div>
                 <div className={`flex items-center space-x-2 ${themeClasses.text.secondary}`}>
                   <Phone className="w-4 h-4" />
